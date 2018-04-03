@@ -1,6 +1,7 @@
 from django.db import models
 import numpy as np
 
+
 # Create your models here.
 class Wine(models.Model):
     name = models.CharField(max_length=200)
