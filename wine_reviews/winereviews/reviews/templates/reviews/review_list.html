@@ -1,17 +1,24 @@
-<h2>Latest reviews</h2>
+{% extends 'reviews/base.html' %}
 
+{% block title %}
+<h3>Latest reviews</h3>
+{% endblock %}
+
+{% block content %}
 {% if latest_review_list %}
-<div>
+<div class="card-deck">
     {% for review in latest_review_list %}
-    <div>
-        <h4><a href="{% url 'reviews:review_detail' review.id %}">
-        {{ review.wine.name }}
-        </a></h4>
-        <h6>rated {{ review.rating }} of 5 by {{ review.user_name }}</h6>
-        <p>{{ review.comment }}</p>
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class "card-header"><a href="{% url 'reviews:review_detail' review.id %}">{{ review.wine.name }}</a>
+        </div>
+        <div class "card-body">
+            <h7 class="card-title">rated {{ review.rating }} of 5 by {{ review.user_name }}</h7>
+            <p class "card-text">{{ review.comment }}</p>
+        </div>
     </div>
     {% endfor %}
 </div>
 {% else %}
 <p>No reviews are available.</p>
 {% endif %}
+{% endblock %}
