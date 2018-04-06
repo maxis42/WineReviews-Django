@@ -7,16 +7,22 @@
 
 {% block content %}
 {% if latest_review_list %}
-<div class="card-deck">
-    {% for review in latest_review_list %}
-    <div class="card">
-        <div class "card-title"><a href="{% url 'reviews:review_detail' review.id %}">{{ review.wine.name }}</a></div>
-        <div class "card-body">{{ review.comment }}</div>
-        <div class "card-footer">rated {{ review.rating }} of 5 by <a href="{% url 'reviews:user_review_list' review.user_name %}" >{{ review.user_name }}</a></div>
+    <div class="card-deck">
+        {% for review in latest_review_list %}
+            <div class="card text-center border-info mb-3" style="min-width: 10rem; max-width: 20rem;">
+                <div class="card-header">
+                    <a class="card-link" href="{% url 'reviews:review_detail' review.id %}">{{ review.wine.name }}</a>
+                </div>
+                <div class="card-body">
+                    <p class="text-info">{{ review.comment }}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    <p class="card-text">rated {{ review.rating }} of 5 by <a class="card-link" href="{% url 'reviews:user_review_list' review.user_name %}">{{ review.user_name }}</a></p>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 {% else %}
-<p>No reviews are available.</p>
+    <p>No reviews are available.</p>
 {% endif %}
 {% endblock %}
