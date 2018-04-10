@@ -10,6 +10,14 @@ class Wine(models.Model):
         all_ratings = list(map(lambda x: x.rating, self.review_set.all()))
         return np.mean(all_ratings)
 
+    def min_rating(self):
+        all_ratings = list(map(lambda x: x.rating, self.review_set.all()))
+        return np.min(all_ratings)
+
+    def max_rating(self):
+        all_ratings = list(map(lambda x: x.rating, self.review_set.all()))
+        return np.max(all_ratings)
+
     def __unicode__(self):
         return self.name
 
@@ -27,3 +35,6 @@ class Review(models.Model):
     user_name = models.CharField(max_length=100)
     comment = models.CharField(max_length=200)
     rating = models.IntegerField(choices=RATING_CHOICES)
+
+    def return_rating_choices(self):
+        return self.RATING_CHOICES

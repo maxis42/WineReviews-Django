@@ -2,35 +2,42 @@
 {% load bootstrap4 %}
 
 {% block title %}
-<h2>{{ wine.name }}</h2>
-<h5>{{ wine.review_set.count }} reviews ({{ wine.average_rating | floatformat }} average rating)</h5>
+    <h3>{{ wine.name }}</h3>
+    <h5>{{ wine.review_set.count }} reviews ({{ wine.average_rating | floatformat }} average rating)</h5>
 {% endblock %}
 
 {% block content %}
-<h3>Recent reviews</h3>
+    <h4>Recent reviews</h4>
 
-{% if wine.review_set.all %}
-<div class="row">
-    {% for review in wine.review_set.all %}
-    <div class="col-xs-6 col-lg-4">
-        <em>{{ review.comment }}</em>
-        <h6>Rated {{ review.rating }} of 5 by {{ review.user_name }}</h6>
-        <h5><a href="{% url 'reviews:review_detail' review.id %}">
-        Read more
-        </a></h5>
-    </div>
-    {% endfor %}
-</div>
-{% else %}
-<p>No reviews for this wine yet</p>
-{% endif %}
+    {% if wine.review_set.all %}
+        <div class="card-deck">
+            {% for review in wine.review_set.all %}
+                <div class="card text-center border-info mb-3" style="min-width: 10rem; max-width: 15rem;">
+                    <div class="card-body">
+                        <p class="text-info">{{ review.comment }}</p>
+                        <a class="card-link" href="{% url 'reviews:review_detail' review.id %}"><small class="text">Read more...</small></a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">rated {{ review.rating }} of 5</small>
+                        <br />
+                        <small class="text-muted">by <a class="card-link" href="{% url 'reviews:user_review_list' review.user_name %}">{{ review.user_name }}</a></small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No reviews for this wine yet</p>
+    {% endif %}
 
-<h3>Add your review</h3>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <h4>Add your review</h4>
 
-<form action="{% url 'reviews:add_review' wine.id %}" method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form layout='inline' %}
-    <button type="submit" class="btn btn-primary">Add</button>
-</form>
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    <form action="{% url 'reviews:add_review' wine.id %}" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form layout='inline' %}
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
 {% endblock %}

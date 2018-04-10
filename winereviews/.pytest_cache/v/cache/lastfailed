@@ -1,0 +1,10 @@
+{
+  "reviews/test/test_models.py::TestReview::test_review_class_comment": true,
+  "reviews/test/test_models.py::TestReview::test_review_class_pubdate": true,
+  "reviews/test/test_models.py::TestReview::test_review_class_rating": true,
+  "reviews/test/test_models.py::TestReview::test_review_class_rating_choices": true,
+  "reviews/test/test_models.py::TestReview::test_review_class_username": true,
+  "reviews/test/test_models.py::TestWine::test_average_rating": true,
+  "reviews/test/test_models.py::TestWine::test_wine_creation_class": true,
+  "test/views_test.py": true
+}

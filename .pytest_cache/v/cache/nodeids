@@ -1,0 +1,7 @@
+[
+  "winereviews/reviews/test/models_test.py::TestWine::()::test_wine_creation_class",
+  "winereviews/reviews/test/models_test.py::TestReview::()::test_review_class_pubdate",
+  "winereviews/reviews/test/models_test.py::TestReview::()::test_review_class_username",
+  "winereviews/reviews/test/models_test.py::TestReview::()::test_review_class_comment",
+  "winereviews/reviews/test/models_test.py::TestReview::()::test_review_class_rating"
+]

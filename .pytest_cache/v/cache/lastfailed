@@ -1,0 +1,4 @@
+{
+  "winereviews/reviews/test/models_test.py::TestReview::()::test_review_class_pubdate": true,
+  "winereviews/test/views_test.py": true
+}

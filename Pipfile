@@ -8,6 +8,8 @@ django = "*"
 "django-bootstrap4" = "*"
 django-registration-redux = "*"
 numpy = "*"
+pipfile = "*"
+pytest = "*"
 
 [dev-packages]
 
